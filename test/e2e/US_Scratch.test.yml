@@ -1,0 +1,7 @@
+config:
+  voiceID: Joey
+  locale: en-US
+
+# Sequence 01. Test scenario: open true or false and close it after selecting players
+"open american space facts": "here's your fact *"
+"stop": "*"

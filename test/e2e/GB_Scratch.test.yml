@@ -1,0 +1,8 @@
+config:
+  locale: en-GB
+  voiceID: Amy
+
+# token cbb74057-bf02-4c6f-bc7f-bfc146680228
+# Sequence 01. Test scenario: open true or false and close it after selecting players
+"open british space facts": "here's your fact *"
+"stop": "*"
