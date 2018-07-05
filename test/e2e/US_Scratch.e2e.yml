@@ -1,0 +1,8 @@
+---
+configuration:
+  #voiceId: Joey
+  locale: en-US
+
+---
+- test: american space facts
+- open american space facts: here's your fact

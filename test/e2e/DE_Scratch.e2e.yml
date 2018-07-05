@@ -1,0 +1,8 @@
+---
+configuration:
+  locale: de-DE
+  #voiceId: Hans
+
+---
+- test: german space facts
+- öffne deutsch weltraumwissen: hier sind deine fakten

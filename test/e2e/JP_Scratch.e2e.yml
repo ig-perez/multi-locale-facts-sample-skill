@@ -1,0 +1,9 @@
+---
+configuration:
+  #voiceId: Mizuki
+  locale: ja-JP
+
+---
+- test: japanese space facts
+- 日本語版豆知識を開いて: 知ってましたか
+#"やめる": "*"

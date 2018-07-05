@@ -1,7 +1,0 @@
-config:
-  voiceID: Mizuki
-  locale: ja-JP
-
-# Sequence 01. Test scenario: open true or false and close it after selecting players
-"日本語版豆知識を開いて": "知ってましたか*"
-"やめる": "*"

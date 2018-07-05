@@ -1,0 +1,8 @@
+---
+configuration:
+  locale: en-GB
+  #voiceId: Amy
+
+---
+- test: british space facts
+- open british space facts: here's your fact
