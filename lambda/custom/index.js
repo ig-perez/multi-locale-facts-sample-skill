@@ -95,36 +95,39 @@ const GetNewFactHandler = {
   },
   handle(handlerInput) {
     const locale = handlerInput.requestEnvelope.request.locale;
+    let speechOutput = "";
+    let nombreSkill = "";
+    let randomFact = "";
 
     if (process.env.UNIT_TEST) {
       if (locale == "de-DE") {
-          const randomFact = DE_data[6];
-          const speechOutput = GET_FACT_MESSAGE_DE + randomFact;
-          const nombreSkill = SKILL_NAME_DE
+          randomFact = DE_data[6];
+          speechOutput = GET_FACT_MESSAGE_DE + randomFact;
+          nombreSkill = SKILL_NAME_DE;
       } else if (locale == "en-US" | locale == "en-GB") {
-          const randomFact = EN_data[6];
-          const speechOutput = GET_FACT_MESSAGE_EN + randomFact;
-          const nombreSkill = SKILL_NAME_EN
+          randomFact = EN_data[6];
+          speechOutput = GET_FACT_MESSAGE_EN + randomFact;
+          nombreSkill = SKILL_NAME_EN;
       } else if (locale == "ja-JP") {
-          const randomFact = JP_data[6];
-          const speechOutput = GET_FACT_MESSAGE_JP + randomFact;
-          const nombreSkill = SKILL_NAME_JP
+          randomFact = JP_data[6];
+          speechOutput = GET_FACT_MESSAGE_JP + randomFact;
+          nombreSkill = SKILL_NAME_JP;
       }
     } else {
         if (locale == "de-DE") {
-            const randomFact = cookbook.getRandomItem(DE_data);
-            const speechOutput = GET_FACT_MESSAGE_DE + randomFact;
-            const nombreSkill = SKILL_NAME_DE
+            randomFact = cookbook.getRandomItem(DE_data);
+            speechOutput = GET_FACT_MESSAGE_DE + randomFact;
+            nombreSkill = SKILL_NAME_DE;
         }
         else if (locale == "en-US" | locale == "en-GB") {
-            const randomFact = cookbook.getRandomItem(EN_data);
-            const speechOutput = GET_FACT_MESSAGE_EN + randomFact;
-            const nombreSkill = SKILL_NAME_EN
+            randomFact = cookbook.getRandomItem(EN_data);
+            speechOutput = GET_FACT_MESSAGE_EN + randomFact;
+            nombreSkill = SKILL_NAME_EN;
         }
         else if (locale == "ja-JP"){
-            const randomFact = cookbook.getRandomItem(JP_data);
-            const speechOutput = GET_FACT_MESSAGE_JP + randomFact;
-            const nombreSkill = SKILL_NAME_JP
+            randomFact = cookbook.getRandomItem(JP_data);
+            speechOutput = GET_FACT_MESSAGE_JP + randomFact;
+            nombreSkill = SKILL_NAME_JP;
         }
     }
     return handlerInput.responseBuilder
