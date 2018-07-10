@@ -96,33 +96,41 @@ const GetNewFactHandler = {
   handle(handlerInput) {
     const locale = handlerInput.requestEnvelope.request.locale;
 
-    if (locale == "de-DE") {
-      const randomFact = cookbook.getRandomItem(DE_data);
-      const speechOutput = GET_FACT_MESSAGE_DE + randomFact;
-
-      return handlerInput.responseBuilder
-        .speak(speechOutput)
-        .withSimpleCard(SKILL_NAME_DE, randomFact)
-        .getResponse();      
+    if (process.env.UNIT_TEST) {
+      if (locale == "de-DE") {
+          const randomFact = DE_data[6];
+          const speechOutput = GET_FACT_MESSAGE_DE + randomFact;
+          const nombreSkill = SKILL_NAME_DE
+      } else if (locale == "en-US" | locale == "en-GB") {
+          const randomFact = EN_data[6];
+          const speechOutput = GET_FACT_MESSAGE_EN + randomFact;
+          const nombreSkill = SKILL_NAME_EN
+      } else if (locale == "ja-JP") {
+          const randomFact = JP_data_data[6];
+          const speechOutput = GET_FACT_MESSAGE_JP + randomFact;
+          const nombreSkill = SKILL_NAME_JP
+      }
+    } else {
+        if (locale == "de-DE") {
+            const randomFact = cookbook.getRandomItem(DE_data);
+            const speechOutput = GET_FACT_MESSAGE_DE + randomFact;
+            const nombreSkill = SKILL_NAME_DE
+        }
+        else if (locale == "en-US" | locale == "en-GB") {
+            const randomFact = cookbook.getRandomItem(EN_data);
+            const speechOutput = GET_FACT_MESSAGE_EN + randomFact;
+            const nombreSkill = SKILL_NAME_EN
+        }
+        else if (locale == "ja-JP"){
+            const randomFact = cookbook.getRandomItem(JP_data);
+            const speechOutput = GET_FACT_MESSAGE_JP + randomFact;
+            const nombreSkill = SKILL_NAME_JP
+        }
     }
-    else if (locale == "en-US" | locale == "en-GB") {
-      const randomFact = cookbook.getRandomItem(EN_data);
-      const speechOutput = GET_FACT_MESSAGE_EN + randomFact;
-
-      return handlerInput.responseBuilder
+    return handlerInput.responseBuilder
         .speak(speechOutput)
-        .withSimpleCard(SKILL_NAME_EN, randomFact)
-        .getResponse();      
-    }
-    else if (locale == "ja-JP"){
-      const randomFact = cookbook.getRandomItem(JP_data);
-      const speechOutput = GET_FACT_MESSAGE_JP + randomFact;
-
-      return handlerInput.responseBuilder
-        .speak(speechOutput)
-        .withSimpleCard(SKILL_NAME_JP, randomFact)
-        .getResponse();      
-    };
+        .withSimpleCard(nombreSkill, randomFact)
+        .getResponse();
   },
 };
 

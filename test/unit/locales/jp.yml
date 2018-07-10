@@ -1,0 +1,8 @@
+heresIsAFact: 知ってましたか？
+cardTitle: 日本語版豆知識
+helpPrompt: 豆知識を聞きたい時は「豆知識」と、終わりたい時は「おしまい」と言ってください。どうしますか？
+helpReprompt: どうしますか？
+stopPrompt: さようなら
+cancelPrompt: さようなら
+fallbackPrompt: 私はあなたにそれを手伝えない
+fallbackReprompt: 私はあなたにそれを手伝えない

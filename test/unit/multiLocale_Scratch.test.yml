@@ -1,0 +1,55 @@
+---
+configuration:
+  locales: en-GB, en-US, de-DE, ja-JP
+
+---
+- test: Launch request, no further interaction.
+- LaunchRequest: # LaunchRequest is not an utterance but a request type and reserved word
+  - response.outputSpeech.ssml: heresIsAFact
+  - response.card.title: cardTitle
+  - response.card.type: Simple
+  - response.card.content: /.*/ # Regular expression indicating any text will match
+
+---
+- test: Ask for help and exit.
+- LaunchRequest # Empty expected part means we are not testing the response
+- AMAZON.HelpIntent: # This is what we want to test in this sequence
+  - response.outputSpeech.ssml: helpPrompt
+  - response.reprompt.outputSpeech.ssml: helpReprompt
+  - response.card: undefined
+- exit:
+  - response.outputSpeech: undefined
+
+---
+- test: Ask for help and stop.
+- LaunchRequest
+- AMAZON.HelpIntent
+- AMAZON.StopIntent: stopPrompt
+
+---
+- test: Ask for help and then for a fact.
+- LaunchRequest
+- AMAZON.HelpIntent
+- GetNewFactIntent:
+  - response.outputSpeech.ssml: heresIsAFact
+  - response.card.title: cardTitle
+  - response.card.type: Simple
+  - response.card.content: "*"
+
+---
+- test: Stop intent
+- LaunchRequest
+- AMAZON.StopIntent: stopPrompt
+
+---
+- test: Cancel intent
+- LaunchRequest
+- AMAZON.CancelIntent: cancelPrompt
+
+---
+- test: Fallback intent
+- LaunchRequest
+- AMAZON.FallbackIntent:
+  - response.outputSpeech.ssml: fallbackPrompt
+  - response.reprompt.outputSpeech.ssml: fallbackReprompt
+- response.shouldEndSession: false

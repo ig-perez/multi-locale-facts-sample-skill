@@ -1,0 +1,8 @@
+heresIsAFact: Here's your fact
+cardTitle: Space Facts
+helpPrompt: You can say tell me a space fact, or, you can say exit... What can I help you with?
+helpReprompt: What can I help you with?
+stopPrompt: Goodbye!
+cancelPrompt: Goodbye!
+fallbackPrompt: The Space Facts skill can't help you with that.  It can help you discover facts about space if you say tell me a space fact. What can I help you with?
+fallbackReprompt: What can I help you with?
