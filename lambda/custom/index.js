@@ -106,7 +106,7 @@ const GetNewFactHandler = {
           const speechOutput = GET_FACT_MESSAGE_EN + randomFact;
           const nombreSkill = SKILL_NAME_EN
       } else if (locale == "ja-JP") {
-          const randomFact = JP_data_data[6];
+          const randomFact = JP_data[6];
           const speechOutput = GET_FACT_MESSAGE_JP + randomFact;
           const nombreSkill = SKILL_NAME_JP
       }

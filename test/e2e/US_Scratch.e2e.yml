@@ -1,6 +1,6 @@
 ---
 configuration:
-  #voiceId: Joey
+  voiceId: Joey
   locale: en-US
   invoker: VirtualDeviceInvoker
   virtualDeviceToken: 1bf8ef67-c36f-46e4-9714-ddeb21d87394

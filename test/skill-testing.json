@@ -1,4 +1,5 @@
 {
+  "handler": "lambda/custom/index.js",
   "homophones": {
     "lettuce": ["let us"],
     "figs": ["six","6","vicks"]

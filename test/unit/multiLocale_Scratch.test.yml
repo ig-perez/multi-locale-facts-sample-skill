@@ -1,6 +1,6 @@
 ---
 configuration:
-  locales: en-GB, en-US, de-DE, ja-JP
+  locales: en-GB,en-US,de-DE,ja-JP
 
 ---
 - test: Launch request, no further interaction.
