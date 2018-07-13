@@ -8,13 +8,16 @@ const cookbook = require('./alexa-cookbook.js');
 //TODO: The items below this comment need your attention.
 //=========================================================================================================================================
 
-  const SKILL_NAME_EN = "English Space Facts";
-  const GET_FACT_MESSAGE_EN = 'Here\'s your fact: ';
-  const HELP_MESSAGE_EN = 'You can say tell me a space fact, or, you can say exit... What can I help you with?';
-  const HELP_REPROMPT_EN = 'What can I help you with?';
-  const FALLBACK_MESSAGE_EN = 'The Space Facts skill can\'t help you with that.  It can help you discover facts about space if you say tell me a space fact. What can I help you with?';
-  const FALLBACK_REPROMPT_EN = 'What can I help you with?';
-  const STOP_MESSAGE_EN = 'Goodbye!';
+  const SKILL_NAME_EN_GB = "British Space Facts";
+  const STOP_MESSAGE_EN_GB = "Cheerio!";
+
+  const SKILL_NAME_EN_US = "English Space Facts";
+  const GET_FACT_MESSAGE_EN_US = 'Here\'s your fact: ';
+  const HELP_MESSAGE_EN_US = 'You can say tell me a space fact, or, you can say exit... What can I help you with?';
+  const HELP_REPROMPT_EN_US = 'What can I help you with?';
+  const FALLBACK_MESSAGE_EN_US = 'The Space Facts skill can\'t help you with that.  It can help you discover facts about space if you say tell me a space fact. What can I help you with?';
+  const FALLBACK_REPROMPT_EN_US = 'What can I help you with?';
+  const STOP_MESSAGE_EN_US = 'Goodbye!';
 
   const SKILL_NAME_DE = "Weltraumwissen";
   const GET_FACT_MESSAGE_DE = "Hier sind deine Fakten: ";
@@ -106,8 +109,8 @@ const GetNewFactHandler = {
           nombreSkill = SKILL_NAME_DE;
       } else if (locale == "en-US" | locale == "en-GB") {
           randomFact = EN_data[6];
-          speechOutput = GET_FACT_MESSAGE_EN + randomFact;
-          nombreSkill = SKILL_NAME_EN;
+          speechOutput = GET_FACT_MESSAGE_EN_US + randomFact;
+          nombreSkill = locale === "en-GB" ? SKILL_NAME_EN_GB : SKILL_NAME_EN_US;
       } else if (locale == "ja-JP") {
           randomFact = JP_data[6];
           speechOutput = GET_FACT_MESSAGE_JP + randomFact;
@@ -121,8 +124,8 @@ const GetNewFactHandler = {
         }
         else if (locale == "en-US" | locale == "en-GB") {
             randomFact = cookbook.getRandomItem(EN_data);
-            speechOutput = GET_FACT_MESSAGE_EN + randomFact;
-            nombreSkill = SKILL_NAME_EN;
+            speechOutput = GET_FACT_MESSAGE_EN_US + randomFact;
+            nombreSkill = locale === "en-GB" ? SKILL_NAME_EN_GB : SKILL_NAME_EN_US;
         }
         else if (locale == "ja-JP"){
             randomFact = cookbook.getRandomItem(JP_data);
@@ -154,8 +157,8 @@ const HelpHandler = {
     }
     else if (locale == "en-US" | locale == "en-GB") {
       return handlerInput.responseBuilder
-      .speak(HELP_MESSAGE_EN)
-      .reprompt(HELP_REPROMPT_EN)
+      .speak(HELP_MESSAGE_EN_US)
+      .reprompt(HELP_REPROMPT_EN_US)
       .getResponse();      
     }
     else if (locale == "ja-JP") {
@@ -187,10 +190,10 @@ const FallbackHandler = {
       .reprompt(FALLBACK_REPROMPT_DE)
       .getResponse();      
     }
-    else if (locale == "en-US" | locale == "en-GB") {
+    else if (locale == "en-US" | locale == "en-GB") { // Same message for en-US and en-GB
       return handlerInput.responseBuilder
-      .speak(FALLBACK_MESSAGE_EN)
-      .reprompt(FALLBACK_REPROMPT_EN)
+      .speak(FALLBACK_MESSAGE_EN_US)
+      .reprompt(FALLBACK_REPROMPT_EN_US)
       .getResponse();      
     }
     else if (locale == "ja-JP") {
@@ -221,7 +224,7 @@ const ExitHandler = {
     }
     else if (locale == "en-US" | locale == "en-GB") {
       return handlerInput.responseBuilder
-      .speak(STOP_MESSAGE_EN)
+      .speak(locale === "en-GB" ? STOP_MESSAGE_EN_GB : STOP_MESSAGE_EN_US) // Different message for en-US and en-GB
       .getResponse();      
     }
     else if (locale == "ja-JP"){

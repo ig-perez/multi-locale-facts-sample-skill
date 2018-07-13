@@ -1,0 +1,12 @@
+---
+configuration:
+  locales: ja-JP
+  handler: lambda/custom/index.js
+
+---
+- test: Launch request, no further interaction.
+- LaunchRequest: # LaunchRequest is not an utterance but a request type and reserved word
+  - response.outputSpeech.ssml: 知ってましたか？
+  - response.card.title: 日本語版豆知識
+  - response.card.type: Simple
+  - response.card.content: /.*/ # Regular expression indicating any text will match

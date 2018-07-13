@@ -1,9 +1,10 @@
 ---
 configuration:
   locales: en-GB,en-US,de-DE,ja-JP
+  handler: lambda/custom/index.js
 
 ---
-- test: Launch request, no further interaction.
+- test.only: Launch request, no further interaction.
 - LaunchRequest: # LaunchRequest is not an utterance but a request type and reserved word
   - response.outputSpeech.ssml: heresIsAFact
   - response.card.title: cardTitle
