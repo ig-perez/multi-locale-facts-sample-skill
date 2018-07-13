@@ -1,6 +1,6 @@
 ---
 configuration:
-  locales: en-GB #,en-US,de-DE,ja-JP
+  locales: en-GB,en-US,de-DE,ja-JP
   handler: lambda/custom/index.js
 
 ---
@@ -43,12 +43,12 @@ configuration:
 - AMAZON.StopIntent: stopPrompt
 
 ---
-- test.only: Cancel intent
+- test: Cancel intent
 - LaunchRequest
 - AMAZON.CancelIntent: cancelPrompt
 
 ---
-- test.only: Fallback intent
+- test: Fallback intent
 - LaunchRequest
 - AMAZON.FallbackIntent:
   - response.outputSpeech.ssml: fallbackPrompt
