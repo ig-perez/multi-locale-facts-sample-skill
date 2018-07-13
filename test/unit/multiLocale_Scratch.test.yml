@@ -1,10 +1,10 @@
 ---
 configuration:
-  locales: en-GB,en-US,de-DE,ja-JP
+  locales: en-GB #,en-US,de-DE,ja-JP
   handler: lambda/custom/index.js
 
 ---
-- test.only: Launch request, no further interaction.
+- test: Launch request, no further interaction.
 - LaunchRequest: # LaunchRequest is not an utterance but a request type and reserved word
   - response.outputSpeech.ssml: heresIsAFact
   - response.card.title: cardTitle
@@ -43,14 +43,14 @@ configuration:
 - AMAZON.StopIntent: stopPrompt
 
 ---
-- test: Cancel intent
+- test.only: Cancel intent
 - LaunchRequest
 - AMAZON.CancelIntent: cancelPrompt
 
 ---
-- test: Fallback intent
+- test.only: Fallback intent
 - LaunchRequest
 - AMAZON.FallbackIntent:
   - response.outputSpeech.ssml: fallbackPrompt
   - response.reprompt.outputSpeech.ssml: fallbackReprompt
-- response.shouldEndSession: false
+  - response.shouldEndSession: false
