@@ -1,0 +1,26 @@
+#=====================================================================================================================
+#     ______    _ ____  ______        __  _
+#    / __/ /__ (_) / / /_  __/__ ___ / /_(_)__  ___ _
+#   _\ \/  '_// / / /   / / / -_|_-</ __/ / _ \/ _ `/
+#  /___/_/\_\/_/_/_/   /_/  \__/___/\__/_/_//_/\_, /
+#                                             /___/
+#
+# Created by Bespoken
+# Learn more at https://read.bespoken.io/end-to-end/getting-started/
+#
+# Skill name: "Space Facts Multi-locale version" by Bespoken
+# Test scope: LaunchRequest
+# Description: General End-to-end test suite for skill invocation
+#=====================================================================================================================
+
+---
+configuration:
+  locale: ja-JP # Default voiceId is set to Mizuki
+
+---
+- test: Invoke skill, no further interaction.
+- 日本語版豆知識を開いて:
+  - prompt: 知ってましたか
+  - reprompt: undefined
+  - cardTitle: 日本語版豆知識
+  - cardContent: "*"

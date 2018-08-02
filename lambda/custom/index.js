@@ -11,7 +11,7 @@ const cookbook = require('./alexa-cookbook.js');
   const SKILL_NAME_EN_GB = "British Space Facts";
   const STOP_MESSAGE_EN_GB = "Cheerio!";
 
-  const SKILL_NAME_EN_US = "English Space Facts";
+  const SKILL_NAME_EN_US = "American Space Facts";
   const GET_FACT_MESSAGE_EN_US = 'Here\'s your fact: ';
   const HELP_MESSAGE_EN_US = 'You can say tell me a space fact, or, you can say exit... What can I help you with?';
   const HELP_REPROMPT_EN_US = 'What can I help you with?';
@@ -102,7 +102,7 @@ const GetNewFactHandler = {
     let nombreSkill = "";
     let randomFact = "";
 
-    if (process.env.UNIT_TEST) {
+    if (process.env.UNIT_TEST) { //  We turn off random fact generation for unit testing
       if (locale == "de-DE") {
           randomFact = DE_data[6];
           speechOutput = GET_FACT_MESSAGE_DE + randomFact;

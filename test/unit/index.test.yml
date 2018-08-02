@@ -1,12 +1,27 @@
+#=====================================================================================================================
+#     ______    _ ____  ______        __  _
+#    / __/ /__ (_) / / /_  __/__ ___ / /_(_)__  ___ _
+#   _\ \/  '_// / / /   / / / -_|_-</ __/ / _ \/ _ `/
+#  /___/_/\_\/_/_/_/   /_/  \__/___/\__/_/_//_/\_, /
+#                                             /___/
+#
+# Created by Bespoken
+# Learn more at https://read.bespoken.io/unit-testing/getting-started/
+#
+# Skill name: "Space Facts Multi-locale version" by Bespoken
+# Test scope: LaunchRequest, GetNewFactIntent, AMAZON.HelpIntent, AMAZON.StopIntent, AMAZON.CancelIntent,
+#             AMAZON.FallbackIntent
+# Description: General Unit test suite for all intents
+#=====================================================================================================================
+
 ---
 configuration:
-  locales: en-GB,en-US,de-DE,ja-JP
-  handler: lambda/custom/index.js
+  locales: de-DE,en-US,en-GB,ja-JP
 
 ---
 - test: Launch request, no further interaction.
 - LaunchRequest: # LaunchRequest is not an utterance but a request type and reserved word
-  - response.outputSpeech.ssml: heresIsAFact
+  - response.outputSpeech.ssml: heresIsAFact # We turn off random fact generation for unit testing
   - response.card.title: cardTitle
   - response.card.type: Simple
   - response.card.content: /.*/ # Regular expression indicating any text will match
@@ -48,7 +63,7 @@ configuration:
 - AMAZON.CancelIntent: cancelPrompt
 
 ---
-- test: Fallback intent
+- test: Fallback intent only available for English locales
 - LaunchRequest
 - AMAZON.FallbackIntent:
   - response.outputSpeech.ssml: fallbackPrompt
